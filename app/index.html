@@ -1,42 +1,77 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="bower_components/angular-animate.css/angular-animate.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.css">
 </head>
 <body ng-app="client" ng-controller="MainCtrl">
-<div class="jumbotron">
-    <h1>Brian's Awesome Products</h1>
-
-    <h2 ng-bind="mySillyText"></h2>
-</div>
 <div class="container">
-    <input ng-model="mySillyText" type="text" class="form-control">
-    <form stripe:form="saveCustomer">
-        <fieldset>
-            <label>Card Number</label>
-            <input class="form-control" type="text" size="20" data-stripe="number"/>
-            <label>CVC</label>
-            <input class="form-control" type="text" size="4" data-stripe="cvc"/>
-            <label>Expiration Month</label>
-            <input class="form-control" type="text" size="2" data-stripe="exp-month"/>
-            <label>Expiration Year</label>
-            <input class="form-control" type="text" size="4" data-stripe="exp-year"/>
-        </fieldset>
-        <div class="payment-errors"></div>
-        <button type="submit" class="btnGreen">Purchase</button>
-    </form>
-    <form id="payment-form" method="post" action="/stripe">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">K.B. Rocket Space</a>
+            </div>
 
-    </form>
-    <img width="100%" src="assets/banana.jpg">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+
+                </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 </div>
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="https://js.stripe.com/v2/"></script>
-<script src="js/directives/stripe.js"></script>
+
+<!-- END NAV BAR -->
+
+<!-- BEGIN BODY -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 text-center">
+            <h2>The Gold Bike</h2>
+            <button class="btn btn-info" ng-click="checkPrice('gold')">Check Price</button>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center">
+            <h2>The Blue Bike</h2>
+            <button class="btn btn-info" ng-click="checkPrice('blue')">Check Price</button>
+        </div>
+        <div class="col-xs-12 col-md-4 text-center">
+            <h2>The Red Bike</h2>
+            <button class="btn btn-info" ng-click="checkPrice('red')">Check Price</button>
+        </div>
+    </div>
+    <div class="container" style="margin-top:20px;">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div ng-show="priceMessage">
+                    The current price of this fancy <span ng-bind="bikeColor"></span> bike is: <span
+                        ng-bind="priceMessage | currency"></span></div>
+            </div>
+        </div>
+
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="https://js.stripe.com/v2/"></script>
+        <script src="js/directives/stripe.js"></script>
 <script src="js/client.js"></script>
 </body>
 </html>
